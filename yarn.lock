@@ -16,6 +16,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.5.5":
+  version "7.6.0"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.6.0.tgz#4fc1d642a9fd0299754e8b5de62c631cf5568205"
+  integrity sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/types@^7.0.0":
   version "7.5.5"
   resolved "https://registry.npmjs.org/@babel/types/-/types-7.5.5.tgz#97b9f728e182785909aa4ab56264f090a028d18a"
@@ -91,6 +98,16 @@
   resolved "https://registry.npmjs.org/@jimengio/ci-progress-webpack-plugin/-/ci-progress-webpack-plugin-0.1.1.tgz#3029a2be1df8f0432fc85a8afa926adc004c4f0a"
   integrity sha512-uVf9yrZHFzT6FC+ZKeuv2GjqKoBaB+ceKZDIqqGH9cL/8iWmvXKKB6LXkCOVVEr9nsJaHOEKQfNGUSELgUzXPw==
 
+"@jimengio/doc-frame@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@jimengio/doc-frame/-/doc-frame-0.1.1.tgz#96f3444089be71de7e3f16dd184d2d71d9a2a88f"
+  integrity sha512-kdiYkXdpz8x4Zh7/z9ZHRgbZnpd1ooQ3gIPFItqGkAX+ltx0aiZxVwhVmIRzPyoBsj1Z0OKX6nhoFLjpGpcvxA==
+
+"@jimengio/jimo-icons@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/@jimengio/jimo-icons/-/jimo-icons-0.2.1.tgz#cb38daf93d5a5a713d9f71a77134a906a260cbe2"
+  integrity sha512-v4wMkKvBa91opUGhM1TvSrz1FvcPwS+srhaE+tgZHiB4D+kOsecC9SDCfOIt1C2CYlclRQcbPBDBfGb7rV1WIw==
+
 "@jimengio/router-code-generator@^0.1.5":
   version "0.1.5"
   resolved "https://registry.npmjs.org/@jimengio/router-code-generator/-/router-code-generator-0.1.5.tgz#9a8e26dd069c42f71a39c23adb9163f35b87dc00"
@@ -102,6 +119,13 @@
   integrity sha512-DMGRq/aGStthBRAjPxsXwJr92MJLaf1sloQYOuwU0u2pk6lZ6Rcx0dWxbBPiz+gaTcF7JDOnFcHN5ZV/cSlgiA==
   dependencies:
     query-string "^6.8.1"
+
+"@jimengio/shared-utils@^0.1.5-a1":
+  version "0.1.5-a1"
+  resolved "https://registry.npmjs.org/@jimengio/shared-utils/-/shared-utils-0.1.5-a1.tgz#15e150afed4528411c3d1437aa3f9349ebd77243"
+  integrity sha512-p79k3U39osZwiEMNO3dDO2owth1tEcPUm4u5gaA1/91zvXMLOKGWMxeV07KvCrpwgl81bfrqGmhgjYLba0+/ew==
+  dependencies:
+    fuzzysearch "^1.0.3"
 
 "@types/events@*":
   version "3.0.0"
@@ -1278,7 +1302,7 @@ cssesc@^3.0.0:
   resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-csstype@^2.2.0, csstype@^2.5.7:
+csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.6:
   version "2.6.6"
   resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.6.tgz#c34f8226a94bbb10c32cc0d714afdf942291fc41"
   integrity sha512-RpFbQGUE74iyPgvr46U9t1xoQBM8T4BL8SxrN66Le2xYAPSaDJJKeztV3awugusb3g3G9iL8StmkBBXhcbbXhg==
@@ -1486,6 +1510,14 @@ dom-converter@^0.2:
   integrity sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
   dependencies:
     utila "~0.4"
+
+dom-helpers@^5.0.1:
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.1.0.tgz#57a726de04abcc2a8bbfe664b3e21c584bde514e"
+  integrity sha512-zRRYDhpiKuAJHasOqCm7lBnsd22nrM4+OYI4ASWCxen+ocTMl7BIAKgGag97TlLiTl6rrau5aPe1VGUm9jQBng==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    csstype "^2.6.6"
 
 dom-serializer@0:
   version "0.2.1"
@@ -2087,6 +2119,11 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+fuzzysearch@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/fuzzysearch/-/fuzzysearch-1.0.3.tgz#dffc80f6d6b04223f2226aa79dd194231096d008"
+  integrity sha1-3/yA9tawQiPyImqnndGUIxCW0Ag=
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -4074,6 +4111,16 @@ react-is@^16.8.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
+react-transition-group@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.3.0.tgz#fea832e386cf8796c58b61874a3319704f5ce683"
+  integrity sha512-1qRV1ZuVSdxPlPf4O8t7inxUGpdyO5zG9IoNfJxSO0ImU2A1YWkEQvFPuIPZmMLkg5hYs7vv5mMOyfgSkvAwvw==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
 react@^16.9.0:
   version "16.9.0"
   resolved "https://registry.npmjs.org/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
@@ -5057,6 +5104,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-immer@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.npmjs.org/use-immer/-/use-immer-0.3.3.tgz#870479127f6050a62c321cf2cb6182e154a1786a"
+  integrity sha512-BYRzcmbdY3wEBz0BZ1NHL15TzAAYmWJq/qj53xhmtgQ2w1/lNI3dxW6j33H0bR1Ycc4NYal0pwPj+107sgC4DQ==
 
 use@^3.1.0:
   version "3.1.1"

@@ -19,17 +19,17 @@ export let genRouter = {
     path: () => `/home`,
     go: () => switchPath(`/home`),
   },
-  content: {
-    name: "content",
-    raw: "content",
-    path: () => `/content`,
-    go: () => switchPath(`/content`),
+  modal: {
+    name: "modal",
+    raw: "modal",
+    path: () => `/modal`,
+    go: () => switchPath(`/modal`),
   },
-  else: {
-    name: "else",
-    raw: "else",
-    path: () => `/else`,
-    go: () => switchPath(`/else`),
+  drawer: {
+    name: "drawer",
+    raw: "drawer",
+    path: () => `/drawer`,
+    go: () => switchPath(`/drawer`),
   },
   _: {
     name: "home",

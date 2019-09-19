@@ -1,7 +1,7 @@
 {
-  "name": "ts-workflow",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@jimengio/meson-modal",
+  "version": "0.2.13-a1",
+  "description": "Modal component for Meson Form and other usages",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot --config webpack/dev.js",
@@ -11,8 +11,8 @@
     "release": "rm -rfv dist/* && yarn dll-release && time webpack --config webpack/release.js",
     "build": "yarn release",
     "serve": "http-server dist/ -s",
-    "compile": "tsc -d --project tsconfig-compile.json --outDir lib/",
-    "upload": "rsync -avr --progress dist/ fe.jimu.io:~/repo/jimengio/ts-workflow",
+    "compile": "rm -rfv lib/* && tsc -d --project tsconfig-compile.json --outDir lib/",
+    "upload": "rsync -avr --progress dist/ fe.jimu.io:~/repo/jimengio/meson-modal",
     "gen-router": "ts-node -P tsconfig-node.json -r tsconfig-paths/register example/gen-router.ts",
     "postinstall": "rm -rfv node_modules/@types/*/node_modules/@types/react"
   },
@@ -21,7 +21,9 @@
   "license": "ISC",
   "devDependencies": {
     "@jimengio/ci-progress-webpack-plugin": "^0.1.0",
+    "@jimengio/doc-frame": "^0.1.1",
     "@jimengio/router-code-generator": "^0.1.5",
+    "@jimengio/shared-utils": "^0.1.5-a1",
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.3",
     "@types/prettier": "^1.18.2",
@@ -54,6 +56,7 @@
     "webpack-hud": "^0.1.2"
   },
   "dependencies": {
+    "@jimengio/jimo-icons": "^0.2.1",
     "@jimengio/ruled-router": "^0.2.15",
     "dayjs": "^1.8.16",
     "emotion": "^10.0.17",
@@ -62,6 +65,8 @@
     "lodash": "^4.17.15",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-transition-group": "^4.3.0",
+    "use-immer": "^0.3.3"
   }
 }
