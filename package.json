@@ -1,8 +1,8 @@
 {
   "name": "@jimengio/meson-modal",
-  "version": "0.2.13-a1",
+  "version": "0.2.13",
   "description": "Modal component for Meson Form and other usages",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot --config webpack/dev.js",
     "watch": "webpack-dev-server --hot --config webpack/dev.js",
@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@jimengio/ci-progress-webpack-plugin": "^0.1.0",
     "@jimengio/doc-frame": "^0.1.1",
