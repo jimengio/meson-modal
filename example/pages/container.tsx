@@ -1,5 +1,5 @@
 import React from "react";
-import { column, row, fullscreen } from "@jimengio/shared-utils";
+import { column, row, fullscreen, expand } from "@jimengio/shared-utils";
 import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { css, cx } from "emotion";
 
@@ -49,6 +49,7 @@ export default (props) => {
   return (
     <div className={cx(fullscreen, row, styleContainer)}>
       <DocSidebar
+        title="Meson Modal"
         currentPath={props.router.name}
         onSwitch={(item) => {
           onSwitchPage(item.path);
@@ -56,7 +57,7 @@ export default (props) => {
         items={items}
       />
 
-      <div>{renderChild(props.router)}</div>
+      <div className={cx(expand, stylePage)}>{renderChild(props.router)}</div>
     </div>
   );
 };
@@ -65,6 +66,6 @@ const styleContainer = css`
   font-family: "Helvetica";
 `;
 
-const styleTitle = css`
-  margin-bottom: 16px;
+let stylePage = css`
+  padding: 40px;
 `;

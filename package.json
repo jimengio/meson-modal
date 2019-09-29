@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@jimengio/ci-progress-webpack-plugin": "^0.1.0",
-    "@jimengio/doc-frame": "^0.1.1",
+    "@jimengio/doc-frame": "^0.1.2-a4",
     "@jimengio/router-code-generator": "^0.1.5",
     "@jimengio/shared-utils": "^0.1.5-a1",
     "@types/lodash": "^4.14.138",

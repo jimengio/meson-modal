@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { css } from "emotion";
-import SourceLink from "../source-link";
 import MesonDrawer from "../../../src/drawer";
+import { DocDemo } from "@jimengio/doc-frame";
 
 let DemoDrawer: FC<{}> = (props) => {
   let [visible, setVisible] = useState(false);
@@ -11,20 +11,25 @@ let DemoDrawer: FC<{}> = (props) => {
     <div className={styleContainer}>
       <div className={styleBoxArea}>
         <div>
-          <button
-            onClick={() => {
-              setVisible(true);
-            }}
-          >
-            Try Drawer
-          </button>{" "}
-          <button
-            onClick={() => {
-              setCustomVisible(true);
-            }}
-          >
-            Drawer with custom header
-          </button>{" "}
+          <DocDemo title="Drawer" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/drawer.tsx">
+            <button
+              onClick={() => {
+                setVisible(true);
+              }}
+            >
+              Try Drawer
+            </button>
+          </DocDemo>
+
+          <DocDemo title={"Drawer with custom header"} link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/drawer.tsx">
+            <button
+              onClick={() => {
+                setCustomVisible(true);
+              }}
+            >
+              Drawer with custom header
+            </button>
+          </DocDemo>
         </div>
       </div>
 
@@ -63,9 +68,6 @@ let DemoDrawer: FC<{}> = (props) => {
           return <div>NOTHING</div>;
         }}
       />
-      <div>
-        <SourceLink fileName={"drawer.tsx"} />
-      </div>
     </div>
   );
 };
