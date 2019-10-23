@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState, ReactNode, useRef } from "react";
-import ReactDOM from "react-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { css, cx } from "emotion";
 import { rowParted, column } from "@jimengio/shared-utils";
@@ -7,8 +6,9 @@ import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 import { useImmer } from "use-immer";
 import { addEventHandler, removeEventHandler } from "./utils/event";
 
+import Portal from "./portal";
+
 let transitionDuration = 160;
-let containerName = "meson-modal-container";
 
 let MesonModal: FC<{
   title: string;
@@ -19,8 +19,6 @@ let MesonModal: FC<{
   hideClose?: boolean;
   disableMoving?: boolean;
 }> = (props) => {
-  let el = useRef<HTMLDivElement>();
-  let [noop, forceUpdate] = useState(null);
   let backdropElement = useRef<HTMLDivElement>();
 
   // use CSS translate to move modals
@@ -78,12 +76,6 @@ let MesonModal: FC<{
   /** Effects */
 
   useEffect(() => {
-    if (el.current == null) {
-      let div = document.createElement("div");
-      el.current = div;
-      forceUpdate(Math.random());
-    }
-
     return () => {
       // in case events not cleared
       if (mousemoveListener.current) {
@@ -95,27 +87,9 @@ let MesonModal: FC<{
     };
   }, []);
 
-  useEffect(() => {
-    let root = document.querySelector(`.${containerName}`);
-
-    if (root == null) {
-      console.error(`Required a container element in body: <div class="${containerName}" />`);
-      return;
-    }
-
-    root.appendChild(el.current);
-    return () => {
-      root.removeChild(el.current);
-    };
-  }, []);
-
   /** Renderers */
 
-  if (el.current == null) {
-    return <span />;
-  }
-
-  return ReactDOM.createPortal(
+  const node = (
     <div onClick={onContainerClick} className={styleAnimations}>
       <CSSTransition in={props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
@@ -143,9 +117,10 @@ let MesonModal: FC<{
           </div>
         </div>
       </CSSTransition>
-    </div>,
-    el.current
+    </div>
   );
+
+  return <Portal>{node}</Portal>;
 };
 
 export default MesonModal;
