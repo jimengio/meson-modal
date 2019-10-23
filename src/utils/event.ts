@@ -17,3 +17,5 @@ export function removeEventHandler(element: HTMLElement | Document, type: string
     delete element["on" + type];
   }
 }
+
+export const canUseDom: boolean = !!(typeof window !== "undefined" && window.document && window.document.createElement);
