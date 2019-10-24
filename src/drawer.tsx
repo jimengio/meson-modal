@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
-import ReactDOM from "react-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { css, cx } from "emotion";
 import { rowParted, column } from "@jimengio/shared-utils";
 import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 
+import Portal from "./portal";
+
 let transitionDuration = 160;
-let containerName = "meson-modal-container";
 
 interface IProps {
   title: string;
@@ -19,37 +19,12 @@ interface IProps {
 }
 
 export default class MesonDrawer extends React.Component<IProps, any> {
-  el: HTMLDivElement;
   constructor(props: IProps) {
     super(props);
-
-    this.el = document.createElement("div");
-  }
-
-  componentDidMount() {
-    let root = document.querySelector(`.${containerName}`);
-
-    if (root == null) {
-      console.error(`Required a container element in body: <div class="${containerName}" />`);
-      return;
-    }
-
-    root.appendChild(this.el);
-  }
-
-  componentWillUnmount() {
-    let root = document.querySelector(`.${containerName}`);
-
-    if (root == null) {
-      console.error(`Required a container element in body: <div class="${containerName}" />`);
-      return;
-    }
-
-    root.removeChild(this.el);
   }
 
   render() {
-    return ReactDOM.createPortal(
+    const node = (
       <div onClick={this.onContainerClick} className={styleAnimations}>
         <CSSTransition in={this.props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
           <div className={styleBackdrop} onClick={this.props.onClose}>
@@ -64,9 +39,10 @@ export default class MesonDrawer extends React.Component<IProps, any> {
             </div>
           </div>
         </CSSTransition>
-      </div>,
-      this.el
+      </div>
     );
+
+    return <Portal>{node}</Portal>;
   }
 
   onContainerClick(event) {
