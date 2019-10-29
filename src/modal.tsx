@@ -18,6 +18,8 @@ let MesonModal: FC<{
   renderContent: () => ReactNode;
   hideClose?: boolean;
   disableMoving?: boolean;
+  /** put modal title at center */
+  centerTitle?: boolean;
 }> = (props) => {
   let backdropElement = useRef<HTMLDivElement>();
 
@@ -100,7 +102,8 @@ let MesonModal: FC<{
               onClick={onContainerClick}
             >
               <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
-                {props.title}
+                {props.centerTitle ? <span /> : null}
+                <span>{props.title}</span>
                 {props.hideClose ? null : (
                   <JimoIcon
                     name={EJimoIcon.slimCross}
