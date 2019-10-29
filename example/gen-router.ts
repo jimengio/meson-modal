@@ -13,7 +13,7 @@ let originalFile = fs.readFileSync(filePath, "utf8");
 let separator = "\n// generated\n";
 
 let pieces = originalFile.split(separator);
-let routerCode = generateTree(routerRules);
+let routerCode = generateTree(routerRules, { addTypes: true, addVersion: true });
 
 console.assert(pieces.length === 2, "supposed to be splitted by separator");
 

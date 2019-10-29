@@ -4,15 +4,20 @@ import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { css, cx } from "emotion";
 
 import { HashRedirect, findRouteTarget } from "@jimengio/ruled-router/lib/dom";
-import { genRouter } from "controller/generated-router";
+import { genRouter, GenRouterTypeMain } from "controller/generated-router";
 import { DocSidebar, ISidebarEntry } from "@jimengio/doc-frame";
 import DemoModal from "./demos/modal";
 import DemoDrawer from "./demos/drawer";
+import DemoModalCenterTitle from "./demos/modal-center-title";
 
 let items: ISidebarEntry[] = [
   {
     title: "Modal",
     path: genRouter.modal.name,
+  },
+  {
+    title: "Modal with title centered",
+    path: genRouter.modalCenterTitle.name,
   },
   {
     title: "Drawer",
@@ -27,13 +32,15 @@ let onSwitchPage = (path: string) => {
   }
 };
 
-const renderChild = (router: IRouteParseResult) => {
+const renderChild = (router: GenRouterTypeMain) => {
   if (router != null) {
     switch (router.name) {
-      case genRouter.modal.name:
+      case "modal":
         return <DemoModal />;
-      case genRouter.drawer.name:
+      case "drawer":
         return <DemoDrawer />;
+      case "modal-center-title":
+        return <DemoModalCenterTitle />;
       default:
         return (
           <HashRedirect to={genRouter.modal.name} delay={0.4}>

@@ -12,6 +12,8 @@ function qsStringify(queries: { [k: string]: string }) {
 
 // generated
 
+// Generated with router-code-generator@0.2.4
+
 export let genRouter = {
   home: {
     name: "home",
@@ -25,16 +27,62 @@ export let genRouter = {
     path: () => `/modal`,
     go: () => switchPath(`/modal`),
   },
+  modalCenterTitle: {
+    name: "modal-center-title",
+    raw: "modal-center-title",
+    path: () => `/modal-center-title`,
+    go: () => switchPath(`/modal-center-title`),
+  },
   drawer: {
     name: "drawer",
     raw: "drawer",
     path: () => `/drawer`,
     go: () => switchPath(`/drawer`),
   },
-  _: {
+  $: {
     name: "home",
     raw: "",
     path: () => `/`,
     go: () => switchPath(`/`),
   },
 };
+
+export type GenRouterTypeMain =
+  | GenRouterTypeTree["home"]
+  | GenRouterTypeTree["modal"]
+  | GenRouterTypeTree["modalCenterTitle"]
+  | GenRouterTypeTree["drawer"]
+  | GenRouterTypeTree["$"];
+
+export interface GenRouterTypeTree {
+  home: {
+    name: "home";
+    params: {};
+    query: {};
+    next: null;
+  };
+  modal: {
+    name: "modal";
+    params: {};
+    query: {};
+    next: null;
+  };
+  modalCenterTitle: {
+    name: "modal-center-title";
+    params: {};
+    query: {};
+    next: null;
+  };
+  drawer: {
+    name: "drawer";
+    params: {};
+    query: {};
+    next: null;
+  };
+  $: {
+    name: "home";
+    params: {};
+    query: {};
+    next: null;
+  };
+}
