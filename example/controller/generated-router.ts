@@ -31,7 +31,7 @@ export let genRouter = {
     path: () => `/drawer`,
     go: () => switchPath(`/drawer`),
   },
-  _: {
+  $: {
     name: "home",
     raw: "",
     path: () => `/`,
