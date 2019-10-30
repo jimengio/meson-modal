@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/meson-modal",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Modal component for Meson Form and other usages",
   "main": "lib/index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "build": "yarn release",
     "serve": "http-server dist/ -s",
     "compile": "rm -rfv lib/* && tsc -d --project tsconfig-compile.json --outDir lib/",
+    "prepare": "yarn compile",
     "upload": "rsync -avr --progress dist/ fe.jimu.io:~/repo/jimengio/meson-modal",
     "gen-router": "ts-node -P tsconfig-node.json -r tsconfig-paths/register example/gen-router.ts",
     "postinstall": "rm -rfv node_modules/@types/*/node_modules/@types/react"
