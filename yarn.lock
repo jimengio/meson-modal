@@ -105,6 +105,13 @@
   resolved "https://registry.npmjs.org/@jimengio/flex-styles/-/flex-styles-0.1.6.tgz#d37e37aa4a85c72feff386c27b920a5f8c5f6335"
   integrity sha512-K5Ij+DrkQFgMc4MMWJOCsI8S26xUy6a1fe0JWEtQjwhrEGXwGv/w4coD19+uMcqtLO1HHasfN2NuoJNSh9g5ag==
 
+"@jimengio/jimo-basics@^0.0.1-a1":
+  version "0.0.1-a1"
+  resolved "https://registry.npmjs.org/@jimengio/jimo-basics/-/jimo-basics-0.0.1-a1.tgz#065144edb68e3959b0e31dcc6f9abcc36a1c6732"
+  integrity sha512-Fh45NMSDmmERU5t5JKmRzC6q7Gz8flS9TyDwKKu+Rv1KXgJRiEsrib+776WlOUuS5V1VWQazsLbhjjFYNo65ZQ==
+  dependencies:
+    emotion "^10.0.17"
+
 "@jimengio/jimo-icons@^0.2.3":
   version "0.2.3"
   resolved "https://registry.npmjs.org/@jimengio/jimo-icons/-/jimo-icons-0.2.3.tgz#b4a420a303697cfffa149e0da55cfde9b8bd6d67"
