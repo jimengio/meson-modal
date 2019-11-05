@@ -39,6 +39,12 @@ export let genRouter = {
     path: () => `/drawer`,
     go: () => switchPath(`/drawer`),
   },
+  confirm: {
+    name: "confirm",
+    raw: "confirm",
+    path: () => `/confirm`,
+    go: () => switchPath(`/confirm`),
+  },
   $: {
     name: "home",
     raw: "",
@@ -52,6 +58,7 @@ export type GenRouterTypeMain =
   | GenRouterTypeTree["modal"]
   | GenRouterTypeTree["modalCenterTitle"]
   | GenRouterTypeTree["drawer"]
+  | GenRouterTypeTree["confirm"]
   | GenRouterTypeTree["$"];
 
 export interface GenRouterTypeTree {
@@ -75,6 +82,12 @@ export interface GenRouterTypeTree {
   };
   drawer: {
     name: "drawer";
+    params: {};
+    query: {};
+    next: null;
+  };
+  confirm: {
+    name: "confirm";
     params: {};
     query: {};
     next: null;

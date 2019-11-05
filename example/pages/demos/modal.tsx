@@ -51,9 +51,7 @@ let DemoModal: FC<{}> = (props) => {
             >
               Try Modal No moving
             </button>
-
             <DocBlock content="通过添加 `disableMoving` 属性关闭拖拽功能."></DocBlock>
-
             <MesonModal
               title={"DEMO modal"}
               visible={noMovingVisible}

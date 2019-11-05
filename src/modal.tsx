@@ -11,13 +11,14 @@ import Portal from "./portal";
 let transitionDuration = 160;
 
 let MesonModal: FC<{
-  title: string;
+  title?: string;
   visible: boolean;
   width?: number | string;
   onClose: () => void;
   renderContent: () => ReactNode;
   hideClose?: boolean;
   disableMoving?: boolean;
+  disableBackdropClose?: boolean;
   /** put modal title at center */
   centerTitle?: boolean;
 }> = (props) => {
@@ -72,7 +73,9 @@ let MesonModal: FC<{
   };
 
   let onBackdropClick = () => {
-    props.onClose();
+    if (!props.disableBackdropClose) {
+      props.onClose();
+    }
   };
 
   /** Effects */
@@ -101,20 +104,22 @@ let MesonModal: FC<{
               style={{ maxHeight: window.innerHeight - 80, width: props.width }}
               onClick={onContainerClick}
             >
-              <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
-                {props.centerTitle ? <span /> : null}
-                <span>{props.title}</span>
-                {props.hideClose ? null : (
-                  <JimoIcon
-                    name={EJimoIcon.slimCross}
-                    className={styleIcon}
-                    onClick={props.onClose}
-                    onMouseEnter={(event) => {
-                      event.stopPropagation();
-                    }}
-                  />
-                )}
-              </div>
+              {props.title ? (
+                <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
+                  {props.centerTitle ? <span /> : null}
+                  <span>{props.title}</span>
+                  {props.hideClose ? null : (
+                    <JimoIcon
+                      name={EJimoIcon.slimCross}
+                      className={styleIcon}
+                      onClick={props.onClose}
+                      onMouseEnter={(event) => {
+                        event.stopPropagation();
+                      }}
+                    />
+                  )}
+                </div>
+              ) : null}
               {props.renderContent()}
             </div>
           </div>
