@@ -66,10 +66,10 @@ import { MesonDrawer } from "jimengio/meson-drawer";
 ```tsx
 import { useConfirmModal } from "jimengio/meson-drawer";
 
-let [ui, waitConfirmation] = useConfirmModal({ title: "title", description: "desc" });
+let [ui, waitConfirmation] = useConfirmModal();
 
 let onClick = () => {
-  let result = await waitConfirmation({description: 'custom description});
+  let result = await waitConfirmation({ title: "title", text: "desc" });
   console.log("result", result);
 };
 

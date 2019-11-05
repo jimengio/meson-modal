@@ -6,7 +6,7 @@ import { useConfirmModal } from "../../../src/confirm";
 import { IconButton } from "@jimengio/jimo-basics";
 
 let DemoConfirm: FC<{}> = (props) => {
-  let [ui, waitConfirmation] = useConfirmModal({ title: "TODO", description: "TODO" });
+  let [ui, waitConfirmation] = useConfirmModal();
 
   return (
     <div className={styleContainer}>
@@ -15,11 +15,11 @@ let DemoConfirm: FC<{}> = (props) => {
 Example:
 
 \`\`\`tsx
-let [ui, waitConfirmation] = useConfirmModal({ title: "TODO", description: "TODO" });
+let [ui, waitConfirmation] = useConfirmModal();
 
 let onClick = () => {
-  let result = await waitConfirmation();
-   console.log("result", result);
+  let result = await waitConfirmation({ title: "TODO", description: "TODO" });
+  console.log("result", result);
 }
 
 <div>
@@ -34,11 +34,11 @@ let onClick = () => {
               onClick={async () => {
                 let result = await waitConfirmation({
                   title: "TODO2",
-                  description: "DESC2",
+                  text: "DESC2",
                 });
                 console.log("result", result);
               }}
-              text={"Conform"}
+              text={"Confirm"}
             ></IconButton>
           </DocDemo>
         </div>

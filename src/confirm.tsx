@@ -7,17 +7,17 @@ import { css, cx } from "emotion";
 
 interface IConfirmOptions {
   title?: string;
-  description: string;
+  text: string;
   cancelText?: string;
   confirmText?: string;
 }
 
-export let useConfirmModal = (options: IConfirmOptions): [ReactNode, (opts?: IConfirmOptions) => Promise<boolean>] => {
+export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IConfirmOptions) => Promise<boolean>] => {
   let [showModal, setShowModal] = useState(false);
   let resolveRef = useRef(null);
   let rejectRef = useRef(null);
   let promiseRef = useRef<Promise<boolean>>();
-  let [confirmOptions, setConfirmOptions] = useState(options);
+  let [confirmOptions, setConfirmOptions] = useState(options || { text: "Sure?" });
 
   let ui = (
     <MesonModal
@@ -30,7 +30,7 @@ export let useConfirmModal = (options: IConfirmOptions): [ReactNode, (opts?: ICo
           <div className={cx(column, expand, styleCard)}>
             {confirmOptions.title ? <div className={styleTitle}>{confirmOptions.title}</div> : null}
             <Space height={16} />
-            <div className={cx(expand, styleDesc)}>{confirmOptions.description}</div>
+            <div className={cx(expand, styleDesc)}>{confirmOptions.text}</div>
             <Space height={16} />
             <div className={rowParted}>
               <span />
@@ -60,7 +60,7 @@ export let useConfirmModal = (options: IConfirmOptions): [ReactNode, (opts?: ICo
   );
 
   let waitConfirmation = (opts?: IConfirmOptions) => {
-    if (options) {
+    if (opts) {
       setConfirmOptions({ ...confirmOptions, ...opts });
     }
     setShowModal(true);
