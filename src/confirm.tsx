@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { ReactNode, useState } from "react";
 import MesonModal from "./modal";
-import { rowParted, rowCenter, Space } from "@jimengio/flex-styles";
+import { rowParted, rowCenter, Space, column, expand, fullHeight } from "@jimengio/flex-styles";
 import { IconButton } from "@jimengio/jimo-basics";
+import { css, cx } from "emotion";
 
 interface IConfirmOptions {
   title?: string;
@@ -11,28 +12,45 @@ interface IConfirmOptions {
   confirmText?: string;
 }
 
-export let useConfirmModal = (options: IConfirmOptions): [ReactNode, () => Promise<boolean>] => {
+export let useConfirmModal = (options: IConfirmOptions): [ReactNode, (opts?: IConfirmOptions) => Promise<boolean>] => {
   let [showModal, setShowModal] = useState(false);
+  let resolveRef = useRef(null);
+  let rejectRef = useRef(null);
   let promiseRef = useRef<Promise<boolean>>();
-  if (promiseRef.current == null) {
-    promiseRef.current = new Promise((resolve, reject) => {});
-  }
+  let [confirmOptions, setConfirmOptions] = useState(options);
 
   let ui = (
     <MesonModal
-      title={options.title}
+      title={null}
       visible={showModal}
       onClose={() => setShowModal(false)}
+      disableBackdropClose={true}
       renderContent={() => {
         return (
-          <div>
-            <div>{options.description}</div>
+          <div className={cx(column, expand, styleCard)}>
+            {confirmOptions.title ? <div className={styleTitle}>{confirmOptions.title}</div> : null}
+            <Space height={16} />
+            <div className={cx(expand, styleDesc)}>{confirmOptions.description}</div>
+            <Space height={16} />
             <div className={rowParted}>
               <span />
               <div className={rowCenter}>
-                <IconButton text={options.cancelText} onClick={() => {}} />
+                <IconButton
+                  text={confirmOptions.cancelText || "Cancel"}
+                  onClick={() => {
+                    resolveRef.current(false);
+                    setShowModal(false);
+                  }}
+                />
                 <Space width={8} />
-                <IconButton text={options.cancelText} fillColor onClick={() => {}} />
+                <IconButton
+                  text={confirmOptions.cancelText || "Confirm"}
+                  fillColor
+                  onClick={() => {
+                    resolveRef.current(true);
+                    setShowModal(false);
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -41,9 +59,34 @@ export let useConfirmModal = (options: IConfirmOptions): [ReactNode, () => Promi
     />
   );
 
-  let waitConfirmation = async () => {
-    return false;
+  let waitConfirmation = (opts?: IConfirmOptions) => {
+    if (options) {
+      setConfirmOptions({ ...confirmOptions, ...opts });
+    }
+    setShowModal(true);
+    if (!showModal) {
+      promiseRef.current = new Promise((resolve, reject) => {
+        resolveRef.current = resolve;
+        rejectRef.current = reject;
+      });
+    }
+    return promiseRef.current;
   };
 
   return [ui, waitConfirmation];
 };
+
+let styleCard = css`
+  padding: 16px;
+`;
+
+let styleTitle = css`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+`;
+
+let styleDesc = css`
+  font-size: 13px;
+  color: hsl(0, 0%, 40%);
+`;

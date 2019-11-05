@@ -9,6 +9,7 @@ import { DocSidebar, ISidebarEntry } from "@jimengio/doc-frame";
 import DemoModal from "./demos/modal";
 import DemoDrawer from "./demos/drawer";
 import DemoModalCenterTitle from "./demos/modal-center-title";
+import DemoConfirm from "./demos/confirm";
 
 let items: ISidebarEntry[] = [
   {
@@ -22,6 +23,10 @@ let items: ISidebarEntry[] = [
   {
     title: "Drawer",
     path: genRouter.drawer.name,
+  },
+  {
+    title: "Confirm",
+    path: genRouter.confirm.name,
   },
 ];
 
@@ -41,6 +46,8 @@ const renderChild = (router: GenRouterTypeMain) => {
         return <DemoDrawer />;
       case "modal-center-title":
         return <DemoModalCenterTitle />;
+      case "confirm":
+        return <DemoConfirm />;
       default:
         return (
           <HashRedirect to={genRouter.modal.name} delay={0.4}>

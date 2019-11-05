@@ -61,6 +61,21 @@ import { MesonDrawer } from "jimengio/meson-drawer";
 />;
 ```
 
+- Confirm API
+
+```tsx
+import { useConfirmModal } from "jimengio/meson-drawer";
+
+let [ui, waitConfirmation] = useConfirmModal({ title: "title", description: "desc" });
+
+let onClick = () => {
+  let result = await waitConfirmation({description: 'custom description});
+  console.log("result", result);
+};
+
+<div>{ui}</div>;
+```
+
 ### Workflow
 
 https://github.com/jimengio/ts-workflow
