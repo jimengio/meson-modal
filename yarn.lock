@@ -91,10 +91,10 @@
   resolved "https://registry.npmjs.org/@jimengio/ci-progress-webpack-plugin/-/ci-progress-webpack-plugin-0.1.1.tgz#3029a2be1df8f0432fc85a8afa926adc004c4f0a"
   integrity sha512-uVf9yrZHFzT6FC+ZKeuv2GjqKoBaB+ceKZDIqqGH9cL/8iWmvXKKB6LXkCOVVEr9nsJaHOEKQfNGUSELgUzXPw==
 
-"@jimengio/doc-frame@^0.1.3-a1":
-  version "0.1.3-a1"
-  resolved "https://registry.npmjs.org/@jimengio/doc-frame/-/doc-frame-0.1.3-a1.tgz#f3585c0f0cbd1d75cb30686d532251d32e57b3ba"
-  integrity sha512-MB3W0Hd1QsdfKUxz2yenx773FGOhQyhbNbsWKJ2rW1BhFrFyWM0mohSSoqFOYt+LWYL1t7PZbzV9ycbA2WSJEQ==
+"@jimengio/doc-frame@^0.1.4-a2":
+  version "0.1.4-a2"
+  resolved "https://registry.npmjs.org/@jimengio/doc-frame/-/doc-frame-0.1.4-a2.tgz#6e1d74bfa6052e0002b7d7a44260bb3d1b88276e"
+  integrity sha512-OV56H0rZvG2TM1DQE52Xay029/zO1Kp/qWH6x0+N8FOpbjMzxjNRMr/gOZmP50vGQeEPALMHIpj8hUBxtrSurA==
   dependencies:
     "@types/highlight.js" "^9.12.3"
     highlight.js "^9.15.10"
@@ -122,10 +122,10 @@
   resolved "https://registry.npmjs.org/@jimengio/router-code-generator/-/router-code-generator-0.2.4.tgz#b609e08d11bf10a3c034bf3218f7e697f1242534"
   integrity sha512-6CEDbDdVA7D25CG0yJD7sjO5MUyNrR8CUjTIKWgFuL4SUm+eNHwLvxZX6MRzTUMKqgnw74LKje15rsTSZxWp4Q==
 
-"@jimengio/ruled-router@^0.2.17":
-  version "0.2.17"
-  resolved "https://registry.npmjs.org/@jimengio/ruled-router/-/ruled-router-0.2.17.tgz#f5f4ce8e8376842171618a93c6a122adb49a7203"
-  integrity sha512-KNVWIQrp5tMqBGeOIKJfLq2J1q4iwy9TkCvwA7wL/MwWExARtqul7NY8YrbSHzVsattqy0TKnXQde5ZG7/58Pw==
+"@jimengio/ruled-router@^0.2.18":
+  version "0.2.18"
+  resolved "https://registry.npmjs.org/@jimengio/ruled-router/-/ruled-router-0.2.18.tgz#0f39bcbf3b7ba37813fa9316c5da769fcd8ae5ac"
+  integrity sha512-aAeqte0PYpVHdNIcX8YlF3HKxHZOpuF9aQOtZsaCwYecN1J0U7z0TS5X8QBbGfjjopK8ip0LYJgB6nQTdxOoWg==
   dependencies:
     query-string "^6.8.1"
 
