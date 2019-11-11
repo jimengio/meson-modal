@@ -4,6 +4,7 @@ import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock, DocSnippet } from "@jimengio/doc-frame";
 import { useConfirmModal } from "../../../src/confirm";
 import { IconButton } from "@jimengio/jimo-basics";
+import { Space } from "@jimengio/flex-styles";
 
 let code = `
 let [ui, waitConfirmation] = useConfirmModal();
@@ -22,6 +23,8 @@ return <div>
 let DemoConfirm: FC<{}> = (props) => {
   let [ui, waitConfirmation] = useConfirmModal();
 
+  let [result, setResult] = useState(null);
+
   return (
     <div className={styleContainer}>
       <div className={styleBoxArea}>
@@ -30,14 +33,18 @@ let DemoConfirm: FC<{}> = (props) => {
           <DocDemo title="Confirm" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/confirm.tsx">
             <IconButton
               onClick={async () => {
+                setResult(null);
                 let result = await waitConfirmation({
                   title: "TODO2",
                   text: "DESC2",
                 });
                 console.log("result", result);
+                setResult(result);
               }}
               text={"Confirm"}
             ></IconButton>
+            <Space width={8} />
+            <span>Result: {result != null ? JSON.stringify(result) : "-"}</span>
           </DocDemo>
         </div>
       </div>
