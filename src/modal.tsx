@@ -10,6 +10,16 @@ import Portal from "./portal";
 
 let transitionDuration = 160;
 
+let checkIfDomTreeContains = (a: HTMLElement, b: HTMLElement): boolean => {
+  if (a === b) {
+    return true;
+  }
+  if (b == null) {
+    return false;
+  }
+  return checkIfDomTreeContains(a, b.parentElement);
+};
+
 let MesonModal: FC<{
   title?: string;
   visible: boolean;
@@ -23,6 +33,7 @@ let MesonModal: FC<{
   centerTitle?: boolean;
 }> = (props) => {
   let backdropElement = useRef<HTMLDivElement>();
+  let cardRef = useRef<HTMLDivElement>();
 
   // use CSS translate to move modals
   let [translation, immerTranslation] = useImmer({
@@ -34,10 +45,6 @@ let MesonModal: FC<{
   let mouseupListener = useRef<(event: MouseEvent) => void>();
 
   /** Methods */
-
-  let onContainerClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.stopPropagation();
-  };
 
   let onMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (props.disableMoving) {
@@ -72,9 +79,12 @@ let MesonModal: FC<{
     addEventHandler(document, "mouseup", mouseupListener.current);
   };
 
-  let onBackdropClick = () => {
+  let onBackdropClick = (event) => {
     if (!props.disableBackdropClose) {
-      props.onClose();
+      let clickFromInside = checkIfDomTreeContains(cardRef.current, event.target);
+      if (!clickFromInside) {
+        props.onClose();
+      }
     }
   };
 
@@ -95,15 +105,11 @@ let MesonModal: FC<{
   /** Renderers */
 
   const node = (
-    <div onClick={onContainerClick} className={styleAnimations}>
+    <div className={styleAnimations}>
       <CSSTransition in={props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
           <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)` }}>
-            <div
-              className={cx(column, stylePopPage, "modal-card")}
-              style={{ maxHeight: window.innerHeight - 80, width: props.width }}
-              onClick={onContainerClick}
-            >
+            <div className={cx(column, stylePopPage, "modal-card")} style={{ maxHeight: window.innerHeight - 80, width: props.width }} ref={cardRef}>
               {props.title ? (
                 <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
                   {props.centerTitle ? <span /> : null}
