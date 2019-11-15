@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/meson-modal",
-  "version": "0.2.18",
+  "version": "0.2.19-a1",
   "description": "Modal component for Meson Form and other usages",
   "main": "lib/index.js",
   "scripts": {
