@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { ReactNode, useState } from "react";
 import MesonModal from "./modal";
 import { rowParted, rowCenter, Space, column, expand, fullHeight } from "@jimengio/flex-styles";
-import { IconButton } from "@jimengio/jimo-basics";
+import { JimoButton } from "@jimengio/jimo-basics";
 import { css, cx } from "emotion";
 
 interface IConfirmOptions {
@@ -35,7 +35,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
             <div className={rowParted}>
               <span />
               <div className={rowCenter}>
-                <IconButton
+                <JimoButton
                   text={confirmOptions.cancelText || "Cancel"}
                   onClick={() => {
                     resolveRef.current(false);
@@ -43,7 +43,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
                   }}
                 />
                 <Space width={8} />
-                <IconButton
+                <JimoButton
                   text={confirmOptions.cancelText || "Confirm"}
                   fillColor
                   onClick={() => {

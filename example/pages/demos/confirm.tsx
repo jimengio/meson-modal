@@ -3,7 +3,7 @@ import { css } from "emotion";
 import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock, DocSnippet } from "@jimengio/doc-frame";
 import { useConfirmModal } from "../../../src/confirm";
-import { IconButton } from "@jimengio/jimo-basics";
+import { JimoButton } from "@jimengio/jimo-basics";
 import { Space } from "@jimengio/flex-styles";
 
 let code = `
@@ -31,7 +31,7 @@ let DemoConfirm: FC<{}> = (props) => {
         <DocSnippet code={code} />
         <div>
           <DocDemo title="Confirm" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/confirm.tsx">
-            <IconButton
+            <JimoButton
               onClick={async () => {
                 setResult(null);
                 let result = await waitConfirmation({
@@ -42,7 +42,7 @@ let DemoConfirm: FC<{}> = (props) => {
                 setResult(result);
               }}
               text={"Confirm"}
-            ></IconButton>
+            ></JimoButton>
             <Space width={8} />
             <span>Result: {result != null ? JSON.stringify(result) : "-"}</span>
           </DocDemo>
