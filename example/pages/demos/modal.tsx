@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { css } from "emotion";
 import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock } from "@jimengio/doc-frame";
+import { JimoButton } from "@jimengio/jimo-basics";
 
 let DemoModal: FC<{}> = (props) => {
   let [visible, setVisible] = useState(false);
@@ -12,14 +13,12 @@ let DemoModal: FC<{}> = (props) => {
       <div className={styleBoxArea}>
         <div>
           <DocDemo title="Modal" link={"https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/modal.tsx"}>
-            <button
+            <JimoButton
               onClick={() => {
                 setVisible(true);
               }}
-            >
-              Try Modal
-            </button>
-
+              text="Try Modal"
+            />
             <MesonModal
               title={"DEMO modal"}
               visible={visible}
@@ -44,13 +43,12 @@ let DemoModal: FC<{}> = (props) => {
           </DocDemo>
 
           <DocDemo title="Modal disabled moving" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/modal.tsx">
-            <button
+            <JimoButton
               onClick={() => {
                 setNoMovingVisible(true);
               }}
-            >
-              Try Modal No moving
-            </button>
+              text="Try Modal No moving"
+            />
             <DocBlock content="通过添加 `disableMoving` 属性关闭拖拽功能."></DocBlock>
             <MesonModal
               title={"DEMO modal"}

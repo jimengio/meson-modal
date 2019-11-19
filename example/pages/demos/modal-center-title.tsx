@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { css } from "emotion";
 import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock } from "@jimengio/doc-frame";
+import { JimoButton } from "@jimengio/jimo-basics";
 
 let DemoModalCenterTitle: FC<{}> = (props) => {
   let [centeredVisible, setCenteredVisible] = useState(false);
@@ -11,13 +12,12 @@ let DemoModalCenterTitle: FC<{}> = (props) => {
       <div className={styleBoxArea}>
         <div>
           <DocDemo title="Modal with title centered" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/modal.tsx">
-            <button
+            <JimoButton
               onClick={() => {
                 setCenteredVisible(true);
               }}
-            >
-              Center title
-            </button>
+              text="Center title"
+            />
 
             <DocBlock content={"通过添加 `centerTitle` 属性, 让标题居中."} />
 

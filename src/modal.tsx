@@ -213,9 +213,13 @@ let styleMoving = css`
 `;
 
 let styleIcon = css`
-  color: #aaa;
+  color: #ccc;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 20px;
+
+  :hover {
+    color: #aaf;
+  }
 `;
 
 /** an extra layer since both move and transition write to `transform` property, would conflict */

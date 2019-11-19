@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { css } from "emotion";
 import MesonDrawer from "../../../src/drawer";
 import { DocDemo } from "@jimengio/doc-frame";
+import { JimoButton } from "@jimengio/jimo-basics";
 
 let DemoDrawer: FC<{}> = (props) => {
   let [visible, setVisible] = useState(false);
@@ -12,23 +13,21 @@ let DemoDrawer: FC<{}> = (props) => {
       <div className={styleBoxArea}>
         <div>
           <DocDemo title="Drawer" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/drawer.tsx">
-            <button
+            <JimoButton
               onClick={() => {
                 setVisible(true);
               }}
-            >
-              Try Drawer
-            </button>
+              text="Try Drawer"
+            />
           </DocDemo>
 
           <DocDemo title={"Drawer with custom header"} link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/drawer.tsx">
-            <button
+            <JimoButton
               onClick={() => {
                 setCustomVisible(true);
               }}
-            >
-              Drawer with custom header
-            </button>
+              text="Drawer with custom header"
+            />
           </DocDemo>
         </div>
       </div>

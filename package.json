@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/meson-modal",
-  "version": "0.2.19",
+  "version": "0.2.20-a1",
   "description": "Modal component for Meson Form and other usages",
   "main": "lib/index.js",
   "scripts": {
@@ -25,12 +25,12 @@
     "@jimengio/doc-frame": "^0.1.7",
     "@jimengio/flex-styles": "^0.1.6",
     "@jimengio/jimo-basics": "^0.0.1",
-    "@jimengio/jimo-icons": "^0.3.0-a1",
+    "@jimengio/jimo-icons": "^0.3.0-a3",
     "@jimengio/router-code-generator": "^0.2.5",
     "@jimengio/ruled-router": "^0.2.19",
     "@jimengio/shared-utils": "^0.1.5",
-    "@types/lodash": "^4.14.147",
-    "@types/node": "^12.12.7",
+    "@types/lodash": "^4.14.148",
+    "@types/node": "^12.12.8",
     "@types/prettier": "^1.18.3",
     "@types/query-string": "^6.3.0",
     "@types/react": "^16.9.11",
