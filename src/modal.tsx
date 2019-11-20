@@ -35,6 +35,9 @@ let MesonModal: FC<{
   let backdropElement = useRef<HTMLDivElement>();
   let cardRef = useRef<HTMLDivElement>();
 
+  /** put state in ref so effect may use */
+  let visibleRef = useRef<boolean>(false);
+
   // use CSS translate to move modals
   let [translation, immerTranslation] = useImmer({
     x: 0,
@@ -90,6 +93,8 @@ let MesonModal: FC<{
 
   /** Effects */
 
+  visibleRef.current = props.visible;
+
   useEffect(() => {
     return () => {
       // in case events not cleared
@@ -99,6 +104,20 @@ let MesonModal: FC<{
       if (mouseupListener.current) {
         document.removeEventListener("mouseup", mousemoveListener.current);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    let keydownHandler = (event: KeyboardEvent) => {
+      // handle ESC
+      if (visibleRef.current && event.keyCode === 27) {
+        props.onClose();
+      }
+    };
+    window.addEventListener("keydown", keydownHandler);
+
+    return () => {
+      window.removeEventListener("keydown", keydownHandler);
     };
   }, []);
 
