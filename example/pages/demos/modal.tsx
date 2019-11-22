@@ -1,8 +1,21 @@
 import React, { FC, useState } from "react";
 import { css } from "emotion";
 import MesonModal from "../../../src/modal";
-import { DocDemo, DocBlock } from "@jimengio/doc-frame";
+import { DocDemo, DocBlock, DocSnippet } from "@jimengio/doc-frame";
 import { JimoButton } from "@jimengio/jimo-basics";
+
+let code = `
+<MesonModal
+  title={"DEMO modal"}
+  visible={visible}
+  onClose={() => {
+    setVisible(false);
+  }}
+  renderContent={() => {
+    return "TODO";
+  }}
+/>
+`;
 
 let DemoModal: FC<{}> = (props) => {
   let [visible, setVisible] = useState(false);
@@ -19,6 +32,7 @@ let DemoModal: FC<{}> = (props) => {
               }}
               text="Try Modal"
             />
+            <DocSnippet code={code} />
             <MesonModal
               title={"DEMO modal"}
               visible={visible}
