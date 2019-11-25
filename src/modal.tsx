@@ -29,6 +29,7 @@ let MesonModal: FC<{
   hideClose?: boolean;
   disableMoving?: boolean;
   disableBackdropClose?: boolean;
+  cardClassName?: string;
   /** put modal title at center */
   centerTitle?: boolean;
 }> = (props) => {
@@ -128,7 +129,11 @@ let MesonModal: FC<{
       <CSSTransition in={props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
           <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)` }}>
-            <div className={cx(column, stylePopPage, "modal-card")} style={{ maxHeight: window.innerHeight - 80, width: props.width }} ref={cardRef}>
+            <div
+              className={cx(column, stylePopPage, props.cardClassName, "modal-card")}
+              style={{ maxHeight: window.innerHeight - 80, width: props.width, minWidth: props.width }}
+              ref={cardRef}
+            >
               {props.title ? (
                 <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
                   {props.centerTitle ? <span /> : null}

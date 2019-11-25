@@ -28,15 +28,14 @@ let DemoConfirm: FC<{}> = (props) => {
   return (
     <div className={styleContainer}>
       <div className={styleBoxArea}>
-        <DocSnippet code={code} />
         <div>
           <DocDemo title="Confirm" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/confirm.tsx">
             <JimoButton
               onClick={async () => {
                 setResult(null);
                 let result = await waitConfirmation({
-                  title: "TODO2",
-                  text: "DESC2",
+                  title: "确定要删除节点?",
+                  text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
                 console.log("result", result);
                 setResult(result);
@@ -45,6 +44,21 @@ let DemoConfirm: FC<{}> = (props) => {
             ></JimoButton>
             <Space width={8} />
             <span>Result: {result != null ? JSON.stringify(result) : "-"}</span>
+            <DocSnippet code={code} />
+          </DocDemo>
+
+          <DocDemo title="No title">
+            <JimoButton
+              onClick={async () => {
+                setResult(null);
+                let result = await waitConfirmation({
+                  text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
+                });
+                console.log("result", result);
+                setResult(result);
+              }}
+              text={"Confirm"}
+            ></JimoButton>
           </DocDemo>
         </div>
       </div>
