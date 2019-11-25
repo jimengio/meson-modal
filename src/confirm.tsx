@@ -25,11 +25,17 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
       visible={showModal}
       onClose={() => setShowModal(false)}
       disableBackdropClose={true}
+      width={400}
       renderContent={() => {
         return (
           <div className={cx(column, expand, styleCard)}>
-            {confirmOptions.title ? <div className={styleTitle}>{confirmOptions.title}</div> : null}
-            <Space height={16} />
+            <Space height={8} />
+            {confirmOptions.title ? (
+              <>
+                <div className={styleTitle}>{confirmOptions.title}</div>
+                <Space height={8} />
+              </>
+            ) : null}
             <div className={cx(expand, styleDesc)}>{confirmOptions.text}</div>
             <Space height={16} />
             <div className={rowParted}>
@@ -61,7 +67,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
 
   let waitConfirmation = (opts?: IConfirmOptions) => {
     if (opts) {
-      setConfirmOptions({ ...confirmOptions, ...opts });
+      setConfirmOptions({ ...confirmOptions, title: opts.title, text: opts.text });
     }
     setShowModal(true);
     if (!showModal) {
@@ -87,6 +93,7 @@ let styleTitle = css`
 `;
 
 let styleDesc = css`
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 24px;
   color: hsl(0, 0%, 40%);
 `;
