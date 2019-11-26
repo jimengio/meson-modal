@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { css } from "emotion";
 import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock, DocSnippet } from "@jimengio/doc-frame";
-import { useConfirmModal } from "../../../src/confirm";
+import { useConfirmModal, resetConfirmButtonLocales } from "../../../src/confirm";
 import { JimoButton } from "@jimengio/jimo-basics";
 import { Space } from "@jimengio/flex-styles";
 
@@ -18,6 +18,15 @@ return <div>
   <button onClick={onClick}>Check</button>
   {ui}
 </div>
+`;
+
+let codeLocale = `
+import { resetConfirmButtonLocales } from "@jimengio/meson-modal";
+
+resetConfirmButtonLocales({
+  cancel: "取消",
+  confirm: "确认",
+});
 `;
 
 let DemoConfirm: FC<{}> = (props) => {
@@ -59,6 +68,27 @@ let DemoConfirm: FC<{}> = (props) => {
               }}
               text={"Confirm"}
             ></JimoButton>
+          </DocDemo>
+
+          <DocDemo title="Locales">
+            <JimoButton
+              onClick={async () => {
+                setResult(null);
+                resetConfirmButtonLocales({
+                  cancel: "取消",
+                  confirm: "确认",
+                });
+                let result = await waitConfirmation({
+                  text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
+                });
+                console.log("result", result);
+                setResult(result);
+              }}
+              text={"Confirm"}
+            ></JimoButton>
+            <Space width={8} />
+            <span>Result: {result != null ? JSON.stringify(result) : "-"}</span>
+            <DocSnippet code={codeLocale} />
           </DocDemo>
         </div>
       </div>

@@ -5,6 +5,16 @@ import { rowParted, rowCenter, Space, column, expand, fullHeight } from "@jimeng
 import { JimoButton } from "@jimengio/jimo-basics";
 import { css, cx } from "emotion";
 
+let defaultButtonLocales = {
+  cancel: "Cancel",
+  confirm: "Confirm",
+};
+
+export let resetConfirmButtonLocales = (locales: { cancel: string; confirm: string }) => {
+  defaultButtonLocales.cancel = locales.cancel;
+  defaultButtonLocales.confirm = locales.confirm;
+};
+
 interface IConfirmOptions {
   title?: string;
   text: string;
@@ -12,7 +22,7 @@ interface IConfirmOptions {
   confirmText?: string;
 }
 
-export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IConfirmOptions) => Promise<boolean>] => {
+export let useConfirmModal = (options?: IConfirmOptions) => {
   let [showModal, setShowModal] = useState(false);
   let resolveRef = useRef(null);
   let rejectRef = useRef(null);
@@ -42,7 +52,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
               <span />
               <div className={rowCenter}>
                 <JimoButton
-                  text={confirmOptions.cancelText || "Cancel"}
+                  text={confirmOptions.cancelText || defaultButtonLocales.cancel}
                   onClick={() => {
                     resolveRef.current(false);
                     setShowModal(false);
@@ -50,7 +60,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
                 />
                 <Space width={8} />
                 <JimoButton
-                  text={confirmOptions.cancelText || "Confirm"}
+                  text={confirmOptions.cancelText || defaultButtonLocales.confirm}
                   fillColor
                   onClick={() => {
                     resolveRef.current(true);
@@ -67,7 +77,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
 
   let waitConfirmation = (opts?: IConfirmOptions) => {
     if (opts) {
-      setConfirmOptions({ ...confirmOptions, title: opts.title, text: opts.text });
+      setConfirmOptions({ ...confirmOptions, title: opts.title, text: opts.text, confirmText: opts.confirmText, cancelText: opts.cancelText });
     }
     setShowModal(true);
     if (!showModal) {
@@ -79,7 +89,7 @@ export let useConfirmModal = (options?: IConfirmOptions): [ReactNode, (opts?: IC
     return promiseRef.current;
   };
 
-  return [ui, waitConfirmation];
+  return [ui, waitConfirmation] as [ReactNode, typeof waitConfirmation];
 };
 
 let styleCard = css`
