@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { ReactNode, useState } from "react";
 import MesonModal from "./modal";
-import { rowParted, rowCenter, Space, column, expand, fullHeight } from "@jimengio/flex-styles";
+import { rowParted, rowCenter, Space, column, expand, fullHeight, center, row } from "@jimengio/flex-styles";
 import { JimoButton } from "@jimengio/jimo-basics";
 import { css, cx } from "emotion";
+import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 
 let defaultButtonLocales = {
   cancel: "Cancel",
@@ -16,7 +17,7 @@ export let resetConfirmButtonLocales = (locales: { cancel: string; confirm: stri
 };
 
 interface IConfirmOptions {
-  title?: string;
+  type?: "warning" | "error";
   text: string;
   cancelText?: string;
   confirmText?: string;
@@ -27,7 +28,17 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
   let resolveRef = useRef(null);
   let rejectRef = useRef(null);
   let promiseRef = useRef<Promise<boolean>>();
-  let [confirmOptions, setConfirmOptions] = useState(options || { text: "Sure?" });
+  let [confirmOptions, setConfirmOptions] = useState(options || ({ text: "Sure?" } as IConfirmOptions));
+
+  let renderIcon = () => {
+    switch (confirmOptions?.type) {
+      case "error":
+        return <JimoIcon name={EJimoIcon.crossEmbossed} className={cx(styleIcon, styleError)} />;
+      case "warning":
+      default:
+        return <JimoIcon name={EJimoIcon.warnEmbossed} className={cx(styleIcon, styleWarning)} />;
+    }
+  };
 
   let ui = (
     <MesonModal
@@ -35,39 +46,36 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
       visible={showModal}
       onClose={() => setShowModal(false)}
       disableBackdropClose={true}
-      width={400}
+      width={440}
       renderContent={() => {
         return (
           <div className={cx(column, expand, styleCard)}>
-            <Space height={8} />
-            {confirmOptions.title ? (
-              <>
-                <div className={styleTitle}>{confirmOptions.title}</div>
-                <Space height={8} />
-              </>
-            ) : null}
-            <div className={cx(expand, styleDesc)}>{confirmOptions.text}</div>
             <Space height={16} />
-            <div className={rowParted}>
-              <span />
-              <div className={rowCenter}>
-                <JimoButton
-                  text={confirmOptions.cancelText || defaultButtonLocales.cancel}
-                  onClick={() => {
-                    resolveRef.current(false);
-                    setShowModal(false);
-                  }}
-                />
-                <Space width={8} />
-                <JimoButton
-                  text={confirmOptions.cancelText || defaultButtonLocales.confirm}
-                  fillColor
-                  onClick={() => {
-                    resolveRef.current(true);
-                    setShowModal(false);
-                  }}
-                />
+            <div className={cx(expand, center)}>
+              <div className={cx(row, styleContent)}>
+                {renderIcon()}
+                <div className={expand}>{confirmOptions.text}</div>
               </div>
+            </div>
+            <Space height={16} />
+            <div className={rowCenter}>
+              <JimoButton
+                canceling
+                text={confirmOptions.cancelText || defaultButtonLocales.cancel}
+                onClick={() => {
+                  resolveRef.current(false);
+                  setShowModal(false);
+                }}
+              />
+              <Space width={16} />
+              <JimoButton
+                text={confirmOptions.cancelText || defaultButtonLocales.confirm}
+                fillColor
+                onClick={() => {
+                  resolveRef.current(true);
+                  setShowModal(false);
+                }}
+              />
             </div>
           </div>
         );
@@ -77,7 +85,7 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
 
   let waitConfirmation = (opts?: IConfirmOptions) => {
     if (opts) {
-      setConfirmOptions({ ...confirmOptions, title: opts.title, text: opts.text, confirmText: opts.confirmText, cancelText: opts.cancelText });
+      setConfirmOptions({ ...confirmOptions, type: opts.type, text: opts.text, confirmText: opts.confirmText, cancelText: opts.cancelText });
     }
     setShowModal(true);
     if (!showModal) {
@@ -96,14 +104,22 @@ let styleCard = css`
   padding: 16px;
 `;
 
-let styleTitle = css`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-`;
-
-let styleDesc = css`
+let styleContent = css`
   font-size: 14px;
   line-height: 24px;
   color: hsl(0, 0%, 40%);
+`;
+
+let styleIcon = css`
+  font-size: 20px;
+  margin-right: 8px;
+  border-radius: 10px;
+`;
+
+let styleError = css`
+  color: hsla(357, 91%, 55%, 1);
+`;
+
+let styleWarning = css`
+  color: hsla(36, 100%, 69%, 1);
 `;
