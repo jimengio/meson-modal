@@ -86,7 +86,9 @@ let MesonModal: FC<{
   let onBackdropClick = (event) => {
     if (!props.disableBackdropClose) {
       let clickFromInside = checkIfDomTreeContains(cardRef.current, event.target);
-      if (!clickFromInside) {
+      let clickBackDropInside = checkIfDomTreeContains(backdropElement.current, event.target);
+
+      if (!clickFromInside && clickBackDropInside) {
         props.onClose();
       }
     }
