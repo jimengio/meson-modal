@@ -10,7 +10,7 @@ let code = `
 let [ui, waitConfirmation] = useConfirmModal();
 
 let onClick = async () => {
-  let result = await waitConfirmation({ title: "TODO", description: "TODO" });
+  let result = await waitConfirmation({ type: "warning", description: "TODO" });
   console.log("result", result);
 }
 
@@ -43,7 +43,6 @@ let DemoConfirm: FC<{}> = (props) => {
               onClick={async () => {
                 setResult(null);
                 let result = await waitConfirmation({
-                  title: "确定要删除节点?",
                   text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
                 console.log("result", result);
@@ -54,19 +53,32 @@ let DemoConfirm: FC<{}> = (props) => {
             <Space width={8} />
             <span>Result: {result != null ? JSON.stringify(result) : "-"}</span>
             <DocSnippet code={code} />
-          </DocDemo>
 
-          <DocDemo title="No title">
             <JimoButton
               onClick={async () => {
                 setResult(null);
                 let result = await waitConfirmation({
+                  text: "很短的警告.",
+                });
+                console.log("result", result);
+                setResult(result);
+              }}
+              text={"Short Warning"}
+            ></JimoButton>
+          </DocDemo>
+
+          <DocDemo title="Error">
+            <JimoButton
+              onClick={async () => {
+                setResult(null);
+                let result = await waitConfirmation({
+                  type: "error",
                   text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
                 console.log("result", result);
                 setResult(result);
               }}
-              text={"Confirm"}
+              text={"Error to confirm"}
             ></JimoButton>
           </DocDemo>
 
