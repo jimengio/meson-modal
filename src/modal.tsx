@@ -130,10 +130,15 @@ let MesonModal: FC<{
     <div className={styleAnimations}>
       <CSSTransition in={props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
-          <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)` }}>
+          <div className={styleMoveContainer}>
             <div
               className={cx(column, stylePopPage, props.cardClassName, "modal-card")}
-              style={{ maxHeight: window.innerHeight - 80, width: props.width, minWidth: props.width }}
+              style={{
+                maxHeight: window.innerHeight - 80,
+                width: props.width,
+                minWidth: props.width,
+                transform: `translate(${translation.x}px, ${translation.y}px)`,
+              }}
               ref={cardRef}
             >
               {props.title ? (
