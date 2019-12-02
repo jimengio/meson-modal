@@ -235,6 +235,7 @@ let styleHeader = css`
   font-size: 16px;
   font-weight: bold;
   border-bottom: 1px solid hsl(0, 0%, 91%);
+  color: hsla(0, 0%, 0%, 0.85);
 `;
 
 let styleMoving = css`
