@@ -69,7 +69,7 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
               />
               <Space width={16} />
               <JimoButton
-                text={confirmOptions.cancelText || defaultButtonLocales.confirm}
+                text={confirmOptions.confirmText || defaultButtonLocales.confirm}
                 fillColor
                 onClick={() => {
                   resolveRef.current(true);

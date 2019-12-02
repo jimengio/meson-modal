@@ -130,10 +130,14 @@ let MesonModal: FC<{
     <div className={styleAnimations}>
       <CSSTransition in={props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
-          <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)` }}>
+          <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)`, opacity: 1 - 0.01 * Math.random() }}>
             <div
               className={cx(column, stylePopPage, props.cardClassName, "modal-card")}
-              style={{ maxHeight: window.innerHeight - 80, width: props.width, minWidth: props.width }}
+              style={{
+                maxHeight: window.innerHeight - 80,
+                width: props.width,
+                minWidth: props.width,
+              }}
               ref={cardRef}
             >
               {props.title ? (
@@ -231,6 +235,7 @@ let styleHeader = css`
   font-size: 16px;
   font-weight: bold;
   border-bottom: 1px solid hsl(0, 0%, 91%);
+  color: hsla(0, 0%, 0%, 0.85);
 `;
 
 let styleMoving = css`
