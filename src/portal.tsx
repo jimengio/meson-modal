@@ -18,11 +18,11 @@ export default class Portal extends React.Component {
     if (!portalContainer) {
       portalContainer = document.createElement("div");
       portalContainer.setAttribute(containerAttributeName, "");
-      document.body.append(portalContainer);
+      document.body.appendChild(portalContainer);
     }
 
     this.el = document.createElement("div");
-    portalContainer.append(this.el);
+    portalContainer.appendChild(this.el);
   }
 
   componentWillUnmount() {
