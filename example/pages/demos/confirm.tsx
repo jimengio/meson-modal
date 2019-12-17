@@ -10,12 +10,15 @@ let code = `
 let [ui, waitConfirmation] = useConfirmModal();
 
 let onClick = async () => {
-  let result = await waitConfirmation({ type: "warning", description: "TODO" });
+  let result = await waitConfirmation({
+    type: "error",
+    text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
+  });
   console.log("result", result);
 }
 
 return <div>
-  <button onClick={onClick}>Check</button>
+  <button onClick={onClick}>Confirm</button>
   {ui}
 </div>
 `;
