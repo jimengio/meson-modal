@@ -110,7 +110,7 @@ const styleLabel = css`
 `;
 
 let codeDefault = `
-setDefaultConfigs({
+setMesonModalDefaultConfigs({
   disableBackdropClose: false,
   disableMoving: false,
   centerTitle: false,
@@ -120,5 +120,5 @@ setDefaultConfigs({
 `;
 
 let contentDefault = `
-对于应用级别的默认配置, 可以通过 \`setDefaultConfigs\` 进行统一控制.
+对于应用级别的默认配置, 可以通过 \`setMesonModalDefaultConfigs\` 进行统一控制.
 `;

@@ -14,6 +14,6 @@ export let defaultModalConfigs: IModalConfigs = {
   cardClassName: undefined,
 };
 
-export let setDefaultConfigs = (options: IModalConfigs) => {
+export let setMesonModalDefaultConfigs = (options: IModalConfigs) => {
   Object.assign(defaultModalConfigs, options);
 };

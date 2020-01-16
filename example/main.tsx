@@ -8,7 +8,7 @@ import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { routerRules } from "./models/router-rules";
 
 import Container from "./pages/container";
-import { setDefaultConfigs } from "../src/configs";
+import { setMesonModalDefaultConfigs } from "../src/configs";
 import { css } from "emotion";
 
 const renderApp = () => {
@@ -17,7 +17,7 @@ const renderApp = () => {
   ReactDOM.render(<Container router={routerTree} />, document.querySelector(".app"));
 };
 
-setDefaultConfigs({
+setMesonModalDefaultConfigs({
   disableBackdropClose: false,
   disableMoving: false,
   centerTitle: false,
