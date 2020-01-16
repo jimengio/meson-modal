@@ -8,12 +8,22 @@ import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { routerRules } from "./models/router-rules";
 
 import Container from "./pages/container";
+import { setDefaultConfigs } from "../src/configs";
+import { css } from "emotion";
 
 const renderApp = () => {
   let routerTree = parseRoutePath(window.location.hash.slice(1), routerRules);
 
   ReactDOM.render(<Container router={routerTree} />, document.querySelector(".app"));
 };
+
+setDefaultConfigs({
+  disableBackdropClose: false,
+  disableMoving: false,
+  centerTitle: false,
+  hideClose: false,
+  cardClassName: undefined,
+});
 
 window.onload = renderApp;
 

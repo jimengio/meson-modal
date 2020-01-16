@@ -7,6 +7,7 @@ import { useImmer } from "use-immer";
 import { addEventHandler, removeEventHandler } from "./utils/event";
 
 import Portal from "./portal";
+import { defaultModalConfigs } from "./configs";
 
 let transitionDuration = 160;
 
@@ -48,10 +49,26 @@ let MesonModal: FC<{
   let mousemoveListener = useRef<(event: MouseEvent) => void>();
   let mouseupListener = useRef<(event: MouseEvent) => void>();
 
+  /** get congigs */
+
+  let { disableBackdropClose = false, centerTitle = false, disableMoving = false, hideClose = false } = defaultModalConfigs;
+  if (props.disableBackdropClose != null) {
+    disableBackdropClose = props.disableBackdropClose;
+  }
+  if (props.centerTitle != null) {
+    centerTitle = props.centerTitle;
+  }
+  if (props.disableMoving != null) {
+    disableMoving = props.disableMoving;
+  }
+  if (props.hideClose != null) {
+    hideClose = props.hideClose;
+  }
+
   /** Methods */
 
   let onMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (props.disableMoving) {
+    if (disableMoving) {
       return;
     }
 
@@ -84,7 +101,7 @@ let MesonModal: FC<{
   };
 
   let onBackdropClick = (event) => {
-    if (!props.disableBackdropClose) {
+    if (!disableBackdropClose) {
       let clickFromInside = checkIfDomTreeContains(cardRef.current, event.target);
       let clickBackDropInside = checkIfDomTreeContains(backdropElement.current, event.target);
 
@@ -132,7 +149,7 @@ let MesonModal: FC<{
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
           <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)`, opacity: 1 - 0.01 * Math.random() }}>
             <div
-              className={cx(column, stylePopPage, props.cardClassName, "modal-card")}
+              className={cx(column, stylePopPage, defaultModalConfigs.cardClassName, props.cardClassName, "modal-card")}
               style={{
                 maxHeight: window.innerHeight - 80,
                 width: props.width,
@@ -141,10 +158,14 @@ let MesonModal: FC<{
               ref={cardRef}
             >
               {props.title ? (
-                <div className={cx(rowParted, styleHeader, props.disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
-                  {props.centerTitle ? <span /> : null}
+                <div className={cx(rowParted, styleHeader, disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
+                  {centerTitle ? <span /> : null}
                   <span>{props.title}</span>
-                  {props.hideClose ? null : (
+                  {hideClose ? (
+                    centerTitle ? (
+                      <span />
+                    ) : null
+                  ) : (
                     <JimoIcon
                       name={EJimoIcon.slimCross}
                       className={styleIcon}
