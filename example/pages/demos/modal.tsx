@@ -86,6 +86,11 @@ let DemoModal: FC<{}> = (props) => {
               }}
             />
           </DocDemo>
+
+          <DocDemo title="Default configs">
+            <DocBlock content={contentDefault} />
+            <DocSnippet code={codeDefault} />
+          </DocDemo>
         </div>
       </div>
     </div>
@@ -102,4 +107,18 @@ let styleBoxArea = css`
 
 const styleLabel = css`
   width: 200px;
+`;
+
+let codeDefault = `
+setMesonModalDefaultConfigs({
+  disableBackdropClose: false,
+  disableMoving: false,
+  centerTitle: false,
+  hideClose: false,
+  cardClassName: undefined,
+});
+`;
+
+let contentDefault = `
+对于应用级别的默认配置, 可以通过 \`setMesonModalDefaultConfigs\` 进行统一控制.
 `;
