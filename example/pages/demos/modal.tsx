@@ -26,6 +26,7 @@ let DemoModal: FC<{}> = (props) => {
       <div className={styleBoxArea}>
         <div>
           <DocDemo title="Modal" link={"https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/modal.tsx"}>
+            <DocBlock content={codeModal} />
             <JimoButton
               onClick={() => {
                 setVisible(true);
@@ -121,4 +122,9 @@ setMesonModalDefaultConfigs({
 
 let contentDefault = `
 对于应用级别的默认配置, 可以通过 \`setMesonModalDefaultConfigs\` 进行统一控制.
+`;
+
+let codeModal = `
+相比 antd, 这个 Modal 组件提供了拖拽移动的功能, 另外在动画还有样式方面出于性能考虑做了优化.
+Modal 的 body 部分做得很简单, 方便定制样式.
 `;

@@ -12,14 +12,13 @@ let DemoModalCenterTitle: FC<{}> = (props) => {
       <div className={styleBoxArea}>
         <div>
           <DocDemo title="Modal with title centered" link="https://github.com/jimengio/meson-modal/blob/master/example/pages/demos/modal.tsx">
+            <DocBlock content={"通过添加 `centerTitle` 属性, 让标题居中."} />
             <JimoButton
               onClick={() => {
                 setCenteredVisible(true);
               }}
               text="Center title"
             />
-
-            <DocBlock content={"通过添加 `centerTitle` 属性, 让标题居中."} />
 
             <MesonModal
               title={"DEMO modal"}
