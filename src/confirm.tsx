@@ -21,6 +21,7 @@ interface IConfirmOptions {
   text: string;
   cancelText?: string;
   confirmText?: string;
+  hideConfirmBtn?: boolean;
 }
 
 export let useConfirmModal = (options?: IConfirmOptions) => {
@@ -57,6 +58,7 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
                 <div className={expand}>{confirmOptions.text}</div>
               </div>
             </div>
+
             <Space height={16} />
             <div className={rowCenter}>
               <JimoButton
@@ -67,15 +69,19 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
                   setShowModal(false);
                 }}
               />
-              <Space width={16} />
-              <JimoButton
-                text={confirmOptions.confirmText || defaultButtonLocales.confirm}
-                fillColor
-                onClick={() => {
-                  resolveRef.current(true);
-                  setShowModal(false);
-                }}
-              />
+              {confirmOptions.hideConfirmBtn ? null : (
+                <>
+                  <Space width={16} />
+                  <JimoButton
+                    text={confirmOptions.confirmText || defaultButtonLocales.confirm}
+                    fillColor
+                    onClick={() => {
+                      resolveRef.current(true);
+                      setShowModal(false);
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         );
@@ -85,7 +91,14 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
 
   let waitConfirmation = (opts?: IConfirmOptions) => {
     if (opts) {
-      setConfirmOptions({ ...confirmOptions, type: opts.type, text: opts.text, confirmText: opts.confirmText, cancelText: opts.cancelText });
+      setConfirmOptions({
+        ...confirmOptions,
+        type: opts.type,
+        text: opts.text,
+        confirmText: opts.confirmText,
+        cancelText: opts.cancelText,
+        hideConfirmBtn: opts.hideConfirmBtn,
+      });
     }
     setShowModal(true);
     if (!showModal) {
