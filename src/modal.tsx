@@ -270,7 +270,7 @@ let styleIcon = css`
   font-size: 20px;
 
   :hover {
-    color: #aaf;
+    color: #729DFF;
   }
 `;
 
