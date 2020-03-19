@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, ReactNode, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { css, cx } from "emotion";
-import { rowParted, column } from "@jimengio/shared-utils";
+import { rowParted, column, expand } from "@jimengio/shared-utils";
 import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 import { useImmer } from "use-immer";
 import { addEventHandler, removeEventHandler } from "./utils/event";
@@ -177,7 +177,7 @@ let MesonModal: FC<{
                   )}
                 </div>
               ) : null}
-              {props.renderContent()}
+              <div className={cx(expand, column)}>{props.renderContent()}</div>
             </div>
           </div>
         </div>
@@ -270,7 +270,7 @@ let styleIcon = css`
   font-size: 20px;
 
   :hover {
-    color: #729DFF;
+    color: #729dff;
   }
 `;
 
