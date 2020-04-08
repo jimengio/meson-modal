@@ -107,10 +107,10 @@
   resolved "https://registry.npm.taobao.org/@jimengio/ci-progress-webpack-plugin/download/@jimengio/ci-progress-webpack-plugin-0.1.1.tgz#3029a2be1df8f0432fc85a8afa926adc004c4f0a"
   integrity sha1-MCmivh348EMvyFqK+pJq3ABMTwo=
 
-"@jimengio/doc-frame@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.npm.taobao.org/@jimengio/doc-frame/download/@jimengio/doc-frame-0.1.11.tgz#289eac94af16c2a331ca002fe86d828008a811ee"
-  integrity sha1-KJ6slK8WwqMxygAv6G2CgAioEe4=
+"@jimengio/doc-frame@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.npmjs.org/@jimengio/doc-frame/-/doc-frame-0.1.12.tgz#c0114929bf4c49c9e8c34968a26baf7b79f936d3"
+  integrity sha512-E5svoYU6SZwz2oLb3iRipT6bMzb8OYzCvNuAvApGeatFfjMzq/Sci5ID1uR2jpv9ORKkg6k+2+iuYBx7YD40uA==
   dependencies:
     "@types/highlight.js" "^9.12.3"
     highlight.js "^9.17.1"
@@ -123,18 +123,18 @@
   resolved "https://registry.npm.taobao.org/@jimengio/flex-styles/download/@jimengio/flex-styles-0.1.6.tgz#d37e37aa4a85c72feff386c27b920a5f8c5f6335"
   integrity sha1-0343qkqFxy/v84bCe5IKX4xfYzU=
 
-"@jimengio/jimo-basics@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.npmjs.org/@jimengio/jimo-basics/-/jimo-basics-0.0.15.tgz#1dbc9ddeb800e3c85e2a7012e349e59485a64152"
-  integrity sha512-jBe9mAo9gMeAtXXDtM7gUx715n+hX4f9pNqZ3UNQtbLCM7APTq1ZFlHl0pxlsGzEdPdqgW2CPdBud/4Iv9CuXA==
+"@jimengio/jimo-basics@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.npmjs.org/@jimengio/jimo-basics/-/jimo-basics-0.0.17.tgz#56ec90f0256dcbc90e39533838517fc051c9c5fd"
+  integrity sha512-b5kwzkcsYZDh0+l6sM4TApX2NUd/QS3sthYSim1m9X70dCK+e5Gq702s9Dj1u95PjxFTH/EFEtWBWeOZwUoPRA==
   dependencies:
     emotion "^10.0.27"
     react-transition-group "^4.3.0"
 
-"@jimengio/jimo-icons@^0.3.7-a3":
-  version "0.3.7-a3"
-  resolved "https://registry.npmjs.org/@jimengio/jimo-icons/-/jimo-icons-0.3.7-a3.tgz#6d99f0c5009ef375038baea1ea422832d492fb50"
-  integrity sha512-4+2MhA8W1x+SeDwler6iXWHipKQzBVwhlfIc3K0PEBuwWezzgZBcCKTOm6o77NksNvnJdeCh5gMb2OV+zBK53Q==
+"@jimengio/jimo-icons@^0.3.9":
+  version "0.3.9"
+  resolved "https://registry.npmjs.org/@jimengio/jimo-icons/-/jimo-icons-0.3.9.tgz#3b4b32652edade119a1eb6307d9e6e8df200ff40"
+  integrity sha512-WHtc1z4sQHfo5TfnIDOe8JCJxn6FXIJeEpI4H4nS3AXtRAJbkspvG9rCdpUqyvBlDRf1N7+bkbLkOqhhTCdS2A==
 
 "@jimengio/router-code-generator@^0.2.6":
   version "0.2.6"
@@ -148,13 +148,6 @@
   dependencies:
     lodash-es "^4.17.15"
     query-string "^6.9.0"
-
-"@jimengio/shared-utils@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.npm.taobao.org/@jimengio/shared-utils/download/@jimengio/shared-utils-0.1.5.tgz#c6435e34674ef389abdb23a97f713ea14fc3b8e1"
-  integrity sha1-xkNeNGdO84mr2yOpf3E+oU/DuOE=
-  dependencies:
-    fuzzysearch "^1.0.3"
 
 "@types/events@*":
   version "3.0.0"
@@ -2137,11 +2130,6 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/function-bind/download/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0=
-
-fuzzysearch@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npm.taobao.org/fuzzysearch/download/fuzzysearch-1.0.3.tgz#dffc80f6d6b04223f2226aa79dd194231096d008"
-  integrity sha1-3/yA9tawQiPyImqnndGUIxCW0Ag=
 
 get-caller-file@^1.0.1:
   version "1.0.3"

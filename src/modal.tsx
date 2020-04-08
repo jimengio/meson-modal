@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, ReactNode, useRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { css, cx } from "emotion";
-import { rowParted, column, expand } from "@jimengio/shared-utils";
+import { rowParted, column, expand } from "@jimengio/flex-styles";
 import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 import { useImmer } from "use-immer";
 import { addEventHandler, removeEventHandler } from "./utils/event";
