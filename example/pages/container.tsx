@@ -1,5 +1,5 @@
 import React from "react";
-import { column, row, fullscreen, expand } from "@jimengio/shared-utils";
+import { column, row, fullscreen, expand } from "@jimengio/flex-styles";
 import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { css, cx } from "emotion";
 
