@@ -3,7 +3,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { css, cx } from "emotion";
 import { rowParted, column, expand } from "@jimengio/flex-styles";
 import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
-import { useImmer } from "use-immer";
 import { addEventHandler, removeEventHandler } from "./utils/event";
 
 import Portal from "./portal";
@@ -41,7 +40,7 @@ let MesonModal: FC<{
   let visibleRef = useRef<boolean>(false);
 
   // use CSS translate to move modals
-  let [translation, immerTranslation] = useImmer({
+  let [translation, updateTransition] = useState({
     x: 0,
     y: 0,
   });
@@ -82,10 +81,10 @@ let MesonModal: FC<{
       anchorX = event.clientX;
       anchorY = event.clientY;
 
-      immerTranslation((draft) => {
-        draft.x = draft.x + dx;
-        draft.y = draft.y + dy;
-      });
+      updateTransition((draft) => ({
+        x: draft.x + dx,
+        y: draft.y + dy,
+      }));
     };
 
     // handle event and remove listeners after mouseup
