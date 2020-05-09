@@ -114,7 +114,11 @@ let DemoModal: FC<{}> = (props) => {
                   <>
                     <div className={expand}>
                       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((idx) => {
-                        return <div className={styleLongContent}>{idx}</div>;
+                        return (
+                          <div key={idx} className={styleLongContent}>
+                            {idx}
+                          </div>
+                        );
                       })}
                     </div>
                     <span

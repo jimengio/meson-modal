@@ -27,7 +27,6 @@ let DemoModalCenterTitle: FC<{}> = (props) => {
                 setCenteredVisible(false);
               }}
               centerTitle
-              disableMoving
               renderContent={() => {
                 return (
                   <div>
