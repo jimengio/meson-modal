@@ -24,7 +24,11 @@ interface IConfirmOptions {
   hideConfirmBtn?: boolean;
 }
 
-export let useConfirmModal = (options?: IConfirmOptions) => {
+/**
+ * 弹出 Modal 用于确认/取消
+ * @param options
+ */
+export let useConfirmPop = (options?: IConfirmOptions) => {
   let [showModal, setShowModal] = useState(false);
   let resolveRef = useRef(null);
   let rejectRef = useRef(null);
@@ -89,7 +93,7 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
     />
   );
 
-  let waitConfirmation = (opts?: IConfirmOptions) => {
+  let forConfirmation = (opts?: IConfirmOptions) => {
     if (opts) {
       setConfirmOptions({
         ...confirmOptions,
@@ -109,6 +113,20 @@ export let useConfirmModal = (options?: IConfirmOptions) => {
     }
     return promiseRef.current;
   };
+
+  return {
+    ui,
+    /** 等待用户操作进行确认, 需要使用 await */
+    forConfirmation,
+  };
+};
+
+/** DEPRECATING, 优先使用 useConfirmPop 统一使用方法 */
+export let useConfirmModal = (options?: IConfirmOptions) => {
+  let plugin = useConfirmPop(options);
+
+  let ui = plugin.ui;
+  let waitConfirmation = plugin.forConfirmation;
 
   return [ui, waitConfirmation] as [ReactNode, typeof waitConfirmation];
 };

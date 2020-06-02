@@ -64,16 +64,16 @@ import { MesonDrawer } from "jimengio/meson-drawer";
 - Confirm API
 
 ```tsx
-import { useConfirmModal } from "jimengio/meson-drawer";
+import { useConfirmPop } from "jimengio/meson-drawer";
 
-let [ui, waitConfirmation] = useConfirmModal();
+let confirmPlugin = useConfirmPop();
 
 let onClick = () => {
-  let result = await waitConfirmation({ title: "title", text: "desc" });
+  let result = await confirmPlugin.forConfirmation({ title: "title", text: "desc" });
   console.log("result", result);
 };
 
-<div>{ui}</div>;
+<div>{confirmPlugin.ui}</div>;
 ```
 
 ### Workflow
