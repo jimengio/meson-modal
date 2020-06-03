@@ -1,16 +1,15 @@
 import React, { FC, useState } from "react";
 import { css } from "emotion";
-import MesonModal from "../../../src/modal";
 import { DocDemo, DocBlock, DocSnippet } from "@jimengio/doc-frame";
-import { useConfirmModal, resetConfirmButtonLocales } from "../../../src/confirm";
+import { resetConfirmButtonLocales, useConfirmPop } from "../../../src/confirm";
 import { JimoButton } from "@jimengio/jimo-basics";
 import { Space } from "@jimengio/flex-styles";
 
 let code = `
-let [ui, waitConfirmation] = useConfirmModal();
+let confirmPlugin = useConformPop();
 
 let onClick = async () => {
-  let result = await waitConfirmation({
+  let result = await confirmPlugin.forConfirmation({
     text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
   });
   console.log("result", result);
@@ -18,7 +17,7 @@ let onClick = async () => {
 
 return <div>
   <button onClick={onClick}>Confirm</button>
-  {ui}
+  {confirmPlugin.ui}
 </div>
 `;
 
@@ -32,7 +31,7 @@ resetConfirmButtonLocales({
 `;
 
 let DemoConfirm: FC<{}> = (props) => {
-  let [ui, waitConfirmation] = useConfirmModal();
+  let confirmPlugin = useConfirmPop();
 
   let [result, setResult] = useState(null);
 
@@ -44,7 +43,7 @@ let DemoConfirm: FC<{}> = (props) => {
             <JimoButton
               onClick={async () => {
                 setResult(null);
-                let result = await waitConfirmation({
+                let result = await confirmPlugin.forConfirmation({
                   text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
                 console.log("result", result);
@@ -59,7 +58,7 @@ let DemoConfirm: FC<{}> = (props) => {
             <JimoButton
               onClick={async () => {
                 setResult(null);
-                let result = await waitConfirmation({
+                let result = await confirmPlugin.forConfirmation({
                   text: "很短的警告.",
                 });
                 console.log("result", result);
@@ -73,7 +72,7 @@ let DemoConfirm: FC<{}> = (props) => {
             <JimoButton
               onClick={async () => {
                 setResult(null);
-                let result = await waitConfirmation({
+                let result = await confirmPlugin.forConfirmation({
                   type: "error",
                   text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
@@ -94,7 +93,7 @@ let DemoConfirm: FC<{}> = (props) => {
                   cancel: "取消",
                   confirm: "确认",
                 });
-                let result = await waitConfirmation({
+                let result = await confirmPlugin.forConfirmation({
                   text: "节点可能包含子节点, 包含子元素, 删除节点会一并删除所有内容.",
                 });
                 console.log("result", result);
@@ -115,7 +114,7 @@ let DemoConfirm: FC<{}> = (props) => {
                   cancel: "取消",
                   confirm: "确认",
                 });
-                let result = await waitConfirmation({
+                let result = await confirmPlugin.forConfirmation({
                   text: "特殊情况下，隐藏确认按钮。",
                   hideConfirmBtn: true,
                 });
@@ -128,7 +127,7 @@ let DemoConfirm: FC<{}> = (props) => {
           </DocDemo>
         </div>
       </div>
-      {ui}
+      {confirmPlugin.ui}
     </div>
   );
 };
