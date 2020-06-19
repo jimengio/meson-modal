@@ -46,7 +46,7 @@ module.exports = {
     warnings: true,
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true, async: false }),
+    new ForkTsCheckerWebpackPlugin({ async: false }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash:8].css",
       chunkFilename: "[name].[chunkhash:8].css",
