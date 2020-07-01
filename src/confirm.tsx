@@ -72,6 +72,7 @@ export let useConfirmPop = (options?: IConfirmOptions) => {
                   resolveRef.current(false);
                   setShowModal(false);
                 }}
+                data-action="cancel"
               />
               {confirmOptions.hideConfirmBtn ? null : (
                 <>
@@ -83,6 +84,7 @@ export let useConfirmPop = (options?: IConfirmOptions) => {
                       resolveRef.current(true);
                       setShowModal(false);
                     }}
+                    data-action="confirm"
                   />
                 </>
               )}

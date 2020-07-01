@@ -155,6 +155,7 @@ let MesonModal: FC<{
                 minWidth: props.width,
               }}
               ref={cardRef}
+              data-area="meson-modal"
             >
               {props.title ? (
                 <div className={cx(rowParted, styleHeader, disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
