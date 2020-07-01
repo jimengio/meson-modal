@@ -28,7 +28,12 @@ export default class MesonDrawer extends React.Component<IProps, any> {
       <div onClick={this.onContainerClick} className={styleAnimations}>
         <CSSTransition in={this.props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
           <div className={styleBackdrop} onClick={this.props.onClose}>
-            <div className={cx(column, stylePopPage, "drawer-card")} style={{ width: this.props.width }} onClick={this.onContainerClick}>
+            <div
+              className={cx(column, stylePopPage, "drawer-card")}
+              style={{ width: this.props.width }}
+              onClick={this.onContainerClick}
+              data-action="meson-drawer"
+            >
               <div className={cx(rowParted, styleHeader, this.props.headerClassName)}>
                 <span />
                 {this.props.title}
