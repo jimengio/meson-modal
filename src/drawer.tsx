@@ -5,6 +5,7 @@ import { rowParted, column } from "@jimengio/flex-styles";
 import JimoIcon, { EJimoIcon } from "@jimengio/jimo-icons";
 
 import Portal from "./portal";
+import { GlobalThemeVariables } from "./theme";
 
 let transitionDuration = 160;
 
@@ -29,16 +30,20 @@ export default class MesonDrawer extends React.Component<IProps, any> {
         <CSSTransition in={this.props.visible} unmountOnExit={true} classNames="backdrop" timeout={transitionDuration}>
           <div className={styleBackdrop} onClick={this.props.onClose}>
             <div
-              className={cx(column, stylePopPage, "drawer-card")}
+              className={cx(column, stylePopPage, GlobalThemeVariables.drawerCard, "drawer-card")}
               style={{ width: this.props.width }}
               onClick={this.onContainerClick}
               data-action="meson-drawer"
             >
-              <div className={cx(rowParted, styleHeader, this.props.headerClassName)}>
+              <div className={cx(rowParted, styleHeader, GlobalThemeVariables.drawerHeader, this.props.headerClassName)}>
                 <span />
                 {this.props.title}
 
-                {this.props.hideClose ? <span /> : <JimoIcon name={EJimoIcon.slimCross} className={styleIcon} onClick={this.props.onClose} />}
+                {this.props.hideClose ? (
+                  <span />
+                ) : (
+                  <JimoIcon name={EJimoIcon.slimCross} className={cx(styleIcon, GlobalThemeVariables.closeIcon)} onClick={this.props.onClose} />
+                )}
               </div>
               {this.props.renderContent()}
             </div>

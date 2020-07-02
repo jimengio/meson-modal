@@ -3,7 +3,6 @@ interface IModalConfigs {
   disableMoving?: boolean;
   hideClose?: boolean;
   centerTitle?: boolean;
-  cardClassName?: string;
 }
 
 export let defaultModalConfigs: IModalConfigs = {
@@ -11,7 +10,6 @@ export let defaultModalConfigs: IModalConfigs = {
   disableMoving: false,
   hideClose: false,
   centerTitle: false,
-  cardClassName: undefined,
 };
 
 export let setMesonModalDefaultConfigs = (options: IModalConfigs) => {

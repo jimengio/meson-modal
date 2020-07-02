@@ -8,5 +8,6 @@ export const routerRules: IRouteRule[] = [
   {
     path: "confirm",
   },
+  { path: "custom-theme" },
   { path: "", name: "home" },
 ];
