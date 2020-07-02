@@ -12,7 +12,7 @@ function qsStringify(queries: { [k: string]: string }) {
 
 // generated
 
-// Generated with router-code-generator@0.2.4
+// Generated with router-code-generator@0.2.7
 
 export let genRouter = {
   home: {
@@ -45,6 +45,12 @@ export let genRouter = {
     path: () => `/confirm`,
     go: () => switchPath(`/confirm`),
   },
+  customTheme: {
+    name: "custom-theme",
+    raw: "custom-theme",
+    path: () => `/custom-theme`,
+    go: () => switchPath(`/custom-theme`),
+  },
   $: {
     name: "home",
     raw: "",
@@ -53,15 +59,18 @@ export let genRouter = {
   },
 };
 
-export type GenRouterTypeMain =
-  | GenRouterTypeTree["home"]
-  | GenRouterTypeTree["modal"]
-  | GenRouterTypeTree["modalCenterTitle"]
-  | GenRouterTypeTree["drawer"]
-  | GenRouterTypeTree["confirm"]
-  | GenRouterTypeTree["$"];
+/** Deprecating, use GenRouterTypeTree["next"] instead */
+export type GenRouterTypeMain = GenRouterTypeTree["next"];
 
 export interface GenRouterTypeTree {
+  next:
+    | GenRouterTypeTree["home"]
+    | GenRouterTypeTree["modal"]
+    | GenRouterTypeTree["modalCenterTitle"]
+    | GenRouterTypeTree["drawer"]
+    | GenRouterTypeTree["confirm"]
+    | GenRouterTypeTree["customTheme"]
+    | GenRouterTypeTree["$"];
   home: {
     name: "home";
     params: {};
@@ -88,6 +97,12 @@ export interface GenRouterTypeTree {
   };
   confirm: {
     name: "confirm";
+    params: {};
+    query: {};
+    next: null;
+  };
+  customTheme: {
+    name: "custom-theme";
     params: {};
     query: {};
     next: null;

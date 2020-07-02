@@ -22,7 +22,6 @@ setMesonModalDefaultConfigs({
   disableMoving: false,
   centerTitle: false,
   hideClose: false,
-  cardClassName: undefined,
 });
 
 window.onload = renderApp;

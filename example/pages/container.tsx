@@ -10,6 +10,7 @@ import DemoModal from "./demos/modal";
 import DemoDrawer from "./demos/drawer";
 import DemoModalCenterTitle from "./demos/modal-center-title";
 import DemoConfirm from "./demos/confirm";
+import CustomThemePage from "./demos/custom-theme";
 
 let items: ISidebarEntry[] = [
   {
@@ -27,6 +28,10 @@ let items: ISidebarEntry[] = [
   {
     title: "Confirm",
     path: genRouter.confirm.name,
+  },
+  {
+    title: "Custom Theme",
+    path: genRouter.customTheme.name,
   },
 ];
 
@@ -48,6 +53,8 @@ const renderChild = (router: GenRouterTypeMain) => {
         return <DemoModalCenterTitle />;
       case "confirm":
         return <DemoConfirm />;
+      case "custom-theme":
+        return <CustomThemePage />;
       default:
         return (
           <HashRedirect to={genRouter.modal.name} delay={0.4}>

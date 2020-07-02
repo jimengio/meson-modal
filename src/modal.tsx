@@ -7,6 +7,7 @@ import { addEventHandler, removeEventHandler } from "./utils/event";
 
 import Portal from "./portal";
 import { defaultModalConfigs } from "./configs";
+import { GlobalThemeVariables } from "./theme";
 
 let transitionDuration = 160;
 
@@ -148,7 +149,7 @@ let MesonModal: FC<{
         <div className={styleBackdrop} onClick={onBackdropClick} ref={backdropElement}>
           <div className={styleMoveContainer} style={{ transform: `translate(${translation.x}px, ${translation.y}px)`, opacity: 1 - 0.01 * Math.random() }}>
             <div
-              className={cx(column, stylePopPage, defaultModalConfigs.cardClassName, props.cardClassName, "modal-card")}
+              className={cx(column, stylePopPage, GlobalThemeVariables.modalCard, props.cardClassName, "modal-card")}
               style={{
                 maxHeight: window.innerHeight - 80,
                 width: props.width,
@@ -158,7 +159,7 @@ let MesonModal: FC<{
               data-area="meson-modal"
             >
               {props.title ? (
-                <div className={cx(rowParted, styleHeader, disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
+                <div className={cx(rowParted, styleHeader, GlobalThemeVariables.modalHeader, disableMoving ? null : styleMoving)} onMouseDown={onMouseDown}>
                   {centerTitle ? <span /> : null}
                   <span>{props.title}</span>
                   {hideClose ? (
@@ -168,7 +169,7 @@ let MesonModal: FC<{
                   ) : (
                     <JimoIcon
                       name={EJimoIcon.slimCross}
-                      className={styleIcon}
+                      className={cx(styleIcon, GlobalThemeVariables.closeIcon)}
                       onClick={props.onClose}
                       onMouseEnter={(event) => {
                         event.stopPropagation();
