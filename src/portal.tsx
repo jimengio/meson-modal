@@ -8,7 +8,7 @@ let portalContainer: HTMLDivElement | null;
 
 export default class Portal extends React.Component {
   el: HTMLDivElement | null = null;
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
 
     if (!canUseDom) return;
