@@ -4,7 +4,7 @@ import { parseRoutePath, IRouteParseResult } from "@jimengio/ruled-router";
 import { css, cx } from "emotion";
 
 import { HashRedirect, findRouteTarget } from "@jimengio/ruled-router/lib/dom";
-import { genRouter, GenRouterTypeMain } from "controller/generated-router";
+import { genRouter, GenRouterTypeTree } from "controller/generated-router";
 import { DocSidebar, ISidebarEntry } from "@jimengio/doc-frame";
 import DemoModal from "./demos/modal";
 import DemoDrawer from "./demos/drawer";
@@ -42,7 +42,7 @@ let onSwitchPage = (path: string) => {
   }
 };
 
-const renderChild = (router: GenRouterTypeMain) => {
+const renderChild = (router: GenRouterTypeTree["next"]) => {
   if (router != null) {
     switch (router.name) {
       case "modal":
@@ -66,7 +66,7 @@ const renderChild = (router: GenRouterTypeMain) => {
   return <div>NOTHING</div>;
 };
 
-export default (props) => {
+export default (props: { router: GenRouterTypeTree["next"] }) => {
   return (
     <div className={cx(fullscreen, row, styleContainer)}>
       <DocSidebar

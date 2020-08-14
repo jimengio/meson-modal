@@ -55,7 +55,7 @@ export default class MesonDrawer extends React.Component<IProps, any> {
     return <Portal>{node}</Portal>;
   }
 
-  onContainerClick(event) {
+  onContainerClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.stopPropagation();
   }
 }

@@ -11,14 +11,14 @@ import { GlobalThemeVariables } from "./theme";
 
 let transitionDuration = 160;
 
-let checkIfDomTreeContains = (a: HTMLElement, b: HTMLElement): boolean => {
+let checkIfDomTreeContains = (a: Element, b: Element): boolean => {
   if (a === b) {
     return true;
   }
   if (b == null) {
     return false;
   }
-  return checkIfDomTreeContains(a, b.parentElement);
+  return checkIfDomTreeContains(a, b.parentElement as Element);
 };
 
 let MesonModal: FC<{
@@ -100,10 +100,10 @@ let MesonModal: FC<{
     addEventHandler(document, "mouseup", mouseupListener.current);
   };
 
-  let onBackdropClick = (event) => {
+  let onBackdropClick = (event: React.MouseEvent) => {
     if (!disableBackdropClose) {
-      let clickFromInside = checkIfDomTreeContains(cardRef.current, event.target);
-      let clickBackDropInside = checkIfDomTreeContains(backdropElement.current, event.target);
+      let clickFromInside = checkIfDomTreeContains(cardRef.current, event.target as Element);
+      let clickBackDropInside = checkIfDomTreeContains(backdropElement.current, event.target as Element);
 
       if (!clickFromInside && clickBackDropInside) {
         props.onClose();
